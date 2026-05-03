@@ -1,43 +1,53 @@
-# Astro Starter Kit: Minimal
+# Astro React Template
+
+Astro site with **React** islands, **Tailwind CSS v4** (Vite plugin), and **shadcn/ui**-style components (`components.json`).
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) 20+ (LTS recommended)
+
+## Clone and install
 
 ```sh
-npm create astro@latest -- --template minimal
+git clone https://github.com/bmn789/astro-react-template project_name
+cd project_name
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Start developing
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+The dev server listens on **http://localhost:3000** (see `astro.config.mjs`).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Local development                    |
+| `npm run build`   | Production build to `./dist/`      |
+| `npm run preview` | Serve the production build locally   |
+| `npm run astro`   | Astro CLI (e.g. `npm run astro check`) |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Stack in this repo
 
-## 🧞 Commands
+- **[Astro](https://docs.astro.build/)** — pages and layouts under `src/pages/` and `src/layouts/`.
+- **[React](https://react.dev/)** — `@astrojs/react`; use `.tsx` components where you need client interactivity (`client:*` directives as needed).
+- **[Tailwind CSS v4](https://tailwindcss.com/docs)** — configured via `@tailwindcss/vite` in `astro.config.mjs`; global styles in `src/styles/global.css`.
+- **shadcn/ui** — `components.json` points UI to `src/components/ui` and utilities to `src/lib/utils.ts`. Path alias `@/` maps to `src/` (see `tsconfig.json` and Vite `resolve.alias`).
 
-All commands are run from the root of the project, from a terminal:
+### Adding shadcn components
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+From the project root (where `components.json` lives):
 
-## 👀 Want to learn more?
+```sh
+npx shadcn@latest add button
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Replace `button` with the [component](https://ui.shadcn.com/docs/components) you need. Import in Astro or React using the `@/` alias, for example `@/components/ui/button`.
+
+## Learn more
+
+- [Astro + React](https://docs.astro.build/en/guides/integrations-guide/react/)
+- [Tailwind v4 with Vite](https://tailwindcss.com/docs/installation/using-vite)
+- [shadcn/ui](https://ui.shadcn.com/docs)
